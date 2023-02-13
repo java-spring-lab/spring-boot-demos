@@ -1,0 +1,28 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.dorongold.task-tree' version '2.1.1'
+}
+
+group = 'demo.springboot'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '19'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.named("jar") {
+    enabled = false
+}
