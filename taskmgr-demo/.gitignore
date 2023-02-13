@@ -14,6 +14,7 @@
 *.tar.gz
 hs_err_pid*
 replay_pid*
+HELP.md
 
 ##############################
 ## Maven
