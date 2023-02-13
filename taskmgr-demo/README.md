@@ -1,1 +1,1 @@
-# Spring Boot Task Manager Demo Project
+# taskmgr-demo
