@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'eclipse'
 	id 'org.springframework.boot' version '2.7.8'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'com.dorongold.task-tree' version '2.1.1'
@@ -13,8 +14,19 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	all*.exclude module: 'spring-boot-starter-logging'
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.slf4j:slf4j-api:2.0.6'
+	implementation 'org.tinylog:tinylog-api:2.6.0'
+	implementation 'org.tinylog:tinylog-impl:2.6.0'
+	implementation 'org.tinylog:slf4j-tinylog:2.6.0'
+	implementation 'org.tinylog:jcl-tinylog:2.6.0'
+	implementation 'org.tinylog:log4j1.2-api:2.6.0'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
