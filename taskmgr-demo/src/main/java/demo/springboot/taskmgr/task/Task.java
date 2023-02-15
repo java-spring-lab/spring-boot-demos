@@ -1,4 +1,4 @@
-package demo.springboot.rest.api.task;
+package demo.springboot.taskmgr.task;
 
 import java.util.Date;
 

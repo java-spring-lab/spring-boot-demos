@@ -1,4 +1,4 @@
-package demo.springboot.rest.api.task;
+package demo.springboot.taskmgr.task;
 
 import java.net.URI;
 import java.util.List;

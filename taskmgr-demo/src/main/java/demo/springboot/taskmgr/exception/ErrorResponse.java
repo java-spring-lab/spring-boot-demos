@@ -1,4 +1,4 @@
-package demo.springboot.rest.api.exception;
+package demo.springboot.taskmgr.exception;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

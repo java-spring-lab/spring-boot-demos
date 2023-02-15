@@ -1,4 +1,4 @@
-package demo.springboot.rest.api;
+package demo.springboot.taskmgr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

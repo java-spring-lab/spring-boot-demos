@@ -1,4 +1,4 @@
-package demo.springboot.rest.api.task;
+package demo.springboot.taskmgr.task;
 
 import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Service;
 
-import demo.springboot.rest.api.exception.TaskNotFoundException;
+import demo.springboot.taskmgr.exception.TaskNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
