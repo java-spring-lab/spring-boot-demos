@@ -15,14 +15,17 @@ import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Service;
 
 import demo.springboot.rest.api.exception.TaskNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class TaskService {
 
     private final List<Task> taskList;
     private final AtomicInteger taskId = new AtomicInteger(0);
 
     public TaskService() {
+
         taskList = new ArrayList<>();
         taskList.add(new Task(taskId.incrementAndGet(), "Task 1", "Description 1", new Date()));
         taskList.add(new Task(taskId.incrementAndGet(), "Task 2", "Description 2", new Date()));
@@ -34,8 +37,9 @@ public class TaskService {
      *
      * @return List of tasks
      */
-    public List<Task> getTasks() {
+    public List<Task> getAllTasks() {
 
+        log.debug("tasks_count={}", taskList.size());
         return taskList;
     }
 
@@ -50,18 +54,26 @@ public class TaskService {
     public Task createTask(String title, String description, Date dueDate) {
 
         // TODO: ensure date is not past
+        log.debug("title={}|desc={}|dueDate={}", title, description, dueDate);
+
         var newTask = new Task(taskId.incrementAndGet(), title, description, dueDate);
         taskList.add(newTask);
 
+        log.debug("newTask={}", newTask);
         return newTask;
     }
 
     public Task getTaskById(Integer id) {
 
-        return taskList.stream()
+        log.debug("fetch_id={}", id);
+
+        var fetchTask = taskList.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new TaskNotFoundException(id));
+
+        log.debug("fetchTask={}", fetchTask);
+        return fetchTask;
     }
 
     /**
@@ -72,9 +84,12 @@ public class TaskService {
      */
     public Task deleteTask(Integer id) {
 
+        log.debug("delete_id={}", id);
+
         var removeTask = getTaskById(id);
         taskList.remove(removeTask);
 
+        log.debug("removeTask={}", removeTask);
         return removeTask;
     }
 
@@ -87,10 +102,13 @@ public class TaskService {
      */
     public Task updateTask(Integer id, String title, String description, Date dueDate) {
 
+        log.debug("update_id={}|title={}|desc={}|dueDate={}", id, title, description, dueDate);
+
         var changeTask = getTaskById(id);
-        var partialTask = new Task(null, title, description, dueDate);
+        var partialTask = new Task(title, description, dueDate);
         BeanUtils.copyProperties(partialTask, changeTask, getNullPropNames(partialTask));
 
+        log.debug("changeTask={}", changeTask);
         return changeTask;
     }
 
@@ -110,6 +128,7 @@ public class TaskService {
             }
         }
 
+        log.debug("nullPropNames={}", nullPropNames);
         return nullPropNames.toArray(String[]::new);
     }
 }

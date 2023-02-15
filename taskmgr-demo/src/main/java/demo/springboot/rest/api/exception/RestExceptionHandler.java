@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
+@Slf4j
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(TaskNotFoundException.class)
@@ -24,6 +27,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
             HttpStatus status, WebRequest req) {
+
+        log.error("Uncaught Exception", ex);
 
         String exMsg = ex.getMessage();
         String message = null;
@@ -41,6 +46,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         errResp.setPath(req.getDescription(false));
         errResp.setMessage(message);
 
+        log.error("errResp={}", errResp);
         return errResp;
     }
 }

@@ -29,9 +29,9 @@ public class TaskController {
      * @return List of tasks
      */
     @GetMapping
-    public ResponseEntity<List<Task>> getTasks() {
+    public ResponseEntity<List<Task>> getAllTasks() {
 
-        return ResponseEntity.ok(taskService.getTasks());
+        return ResponseEntity.ok(taskService.getAllTasks());
     }
 
     /**
@@ -93,6 +93,7 @@ public class TaskController {
                 partialTask.getTitle(),
                 partialTask.getDescription(),
                 partialTask.getDueDate());
+
         return ResponseEntity.accepted().body(updatedTask);
     }
 }

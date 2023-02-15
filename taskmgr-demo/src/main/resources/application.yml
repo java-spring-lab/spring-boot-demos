@@ -1,2 +1,4 @@
 server:
   port: 2023
+logging.level:
+  demo.springboot: debug

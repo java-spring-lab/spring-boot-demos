@@ -14,19 +14,10 @@ repositories {
 	mavenCentral()
 }
 
-configurations {
-	all*.exclude module: 'spring-boot-starter-logging'
-}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.slf4j:slf4j-api:2.0.6'
-	implementation 'org.tinylog:tinylog-api:2.6.0'
-	implementation 'org.tinylog:tinylog-impl:2.6.0'
-	implementation 'org.tinylog:slf4j-tinylog:2.6.0'
-	implementation 'org.tinylog:jcl-tinylog:2.6.0'
-	implementation 'org.tinylog:log4j1.2-api:2.6.0'
-
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
