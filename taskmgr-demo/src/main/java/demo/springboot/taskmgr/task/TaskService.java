@@ -14,8 +14,9 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Service;
 
-import demo.springboot.taskmgr.exception.TaskNotFoundException;
 import lombok.extern.slf4j.Slf4j;
+
+import demo.springboot.taskmgr.exception.TaskNotFoundException;
 
 @Service
 @Slf4j
@@ -46,9 +47,9 @@ public class TaskService {
     /**
      * Create a new task
      *
-     * @param title       Title of new task
+     * @param title Title of new task
      * @param description Descripiton of new task
-     * @param dueDate     Due Date of new task
+     * @param dueDate Due Date of new task
      * @return Task object created
      */
     public Task createTask(String title, String description, Date dueDate) {
@@ -96,7 +97,7 @@ public class TaskService {
     /**
      * Update a task by given id
      *
-     * @param id   Task id to update
+     * @param id Task id to update
      * @param task Task object sent by client
      * @return the updated task
      */

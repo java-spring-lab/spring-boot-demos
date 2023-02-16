@@ -24,6 +24,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return buildError(HttpStatus.NOT_FOUND, req, ex.getMessage());
     }
 
+    @ExceptionHandler(NoteNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse taskNotFoundException(NoteNotFoundException ex, WebRequest req) {
+
+        return buildError(HttpStatus.NOT_FOUND, req, ex.getMessage());
+    }
+
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
             HttpStatus status, WebRequest req) {
